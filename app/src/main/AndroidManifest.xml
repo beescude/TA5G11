@@ -9,6 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TA5G11">
+        <activity android:name=".principal"></activity>
+        <activity android:name=".vent_registro" />
+        <activity android:name=".v_registro" />
+        <activity android:name=".registro" />
+        <activity android:name=".Inicio_sesion" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

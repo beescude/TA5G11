@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TA5G11</string>
+    <string-array name="categorias">
+        <item>Acción</item>
+        <item>Terror</item>
+        <item>Infantil</item>
+    </string-array>
 </resources>
