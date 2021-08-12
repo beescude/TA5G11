@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ta5g11">
+    package="com.example.ta5g11" >
 
     <application
         android:allowBackup="true"
@@ -8,13 +8,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TA5G11">
-        <activity android:name=".principal"></activity>
+        android:theme="@style/Theme.TA5G11" >
+        <activity android:name=".Informacion" />
+        <activity android:name=".principal" />
         <activity android:name=".vent_registro" />
         <activity android:name=".v_registro" />
         <activity android:name=".registro" />
         <activity android:name=".Inicio_sesion" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

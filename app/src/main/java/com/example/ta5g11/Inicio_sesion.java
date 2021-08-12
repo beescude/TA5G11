@@ -12,13 +12,13 @@ import android.widget.Toast;
 
 public class Inicio_sesion extends AppCompatActivity {
     EditText etusuario, etcontraseña;
-
+    public static final String EXTRA_MESSAGE = "com.example.ta5g11.MESSAGE";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio_sesion);
-        etusuario = (EditText) findViewById(R.id.usuario);
-        etcontraseña = (EditText) findViewById(R.id.contraseña);
+        etusuario = (EditText) findViewById(R.id.usuario1);
+        etcontraseña = (EditText) findViewById(R.id.contraseña1);
     }
 
     public void registrarse(View view) {
@@ -26,19 +26,31 @@ public class Inicio_sesion extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void iniciarsesion(View view) {
+    public  void iniciarsesion(View view) {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
         String usuarioText = etusuario.getText().toString();
         String contraseñaText = etcontraseña.getText().toString();
         if (!usuarioText.isEmpty() || !contraseñaText.isEmpty()) {
-            Cursor fila = bd.rawQuery("select usuario, contraseña from estudiantes where " + "usuario=" + usuarioText, null);
+
+           Cursor fila = bd.rawQuery("select usuario,nombres,apellidos,correo,contraseña from usuarios where usuario='" + usuarioText+"'",  null);
+
             if (fila.moveToFirst()) {
+                String nombre = fila.getString(1);
+                String usuario = fila.getString(0);
+                String apellidos = fila.getString(2);
+                String correo = fila.getString(3);
+                String texto = "\nUsuario: " + usuario + "\nNombre: " + nombre + "\nApellidos: " + apellidos + "\nCorreo: " + correo;
+                Bundle parmetros = new Bundle();
+                parmetros.putString("datos", texto);
+                if (contraseñaText.equals(fila.getString(4))) {
                     Intent i = new Intent(this, principal.class);
+                    i.putExtra("datos", texto);
                     startActivity(i);
                 }
             } else {
                 Toast.makeText(this, "No ha ingresado datos correctamente", Toast.LENGTH_SHORT).show();
             }
+        }
         }
     }
